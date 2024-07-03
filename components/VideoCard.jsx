@@ -1,6 +1,7 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { icons } from '../constants';
+import { ResizeMode, Video } from 'expo-av';
 
 const VideoCard = ({ video: { title, thumbnail, video, prompt, creator: { username, avatar } } }) => {
     const [play, setPlay] = useState(false)
@@ -44,11 +45,22 @@ const VideoCard = ({ video: { title, thumbnail, video, prompt, creator: { userna
             </View>
 
             {play ? (
-                <Text className='text-white'>Playing</Text>
+                <Video
+                    source={{ uri: video }}
+                    className='w-full h-60 rounded-xl mt-3'
+                    resizeMode={ResizeMode.CONTAIN}
+                    useNativeControls
+                    shouldPlay
+                    onPlaybackStatusUpdate={(status) => {
+                        if (status.didJustFinish) {
+                            setPlay(false);
+                        }
+                    }}
+                />
             ) : (
                 <TouchableOpacity
-                activeOpacity={0.7}
-                onPress={() => setPlay(true)}
+                    activeOpacity={0.7}
+                    onPress={() => setPlay(true)}
                     className='w-full h-60 rounded-xl mt-3 relative justify-center items-center'
                 >
                     <Image
@@ -57,7 +69,7 @@ const VideoCard = ({ video: { title, thumbnail, video, prompt, creator: { userna
                         resizeMode='cover'
                     />
 
-                    <Image 
+                    <Image
                         source={icons.play}
                         className='w-12 h-12 absolute'
                         resizeMode='contain'
@@ -69,5 +81,3 @@ const VideoCard = ({ video: { title, thumbnail, video, prompt, creator: { userna
 }
 
 export default VideoCard
-
-const styles = StyleSheet.create({})
