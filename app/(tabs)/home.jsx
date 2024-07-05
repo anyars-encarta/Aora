@@ -24,8 +24,6 @@ const Home = () => {
     setRefreshing(false)
   }
 
-  const handleChange = () => { };
-
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
@@ -58,7 +56,6 @@ const Home = () => {
             <SearchInput
               title='Search'
               placeholder='Search for a video topic'
-              handleChangeText={handleChange}
               otherStyles=''
             />
 
