@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FormField from '../../components/FormField';
@@ -22,6 +22,20 @@ const Create = () => {
       ? ['image/png', 'image/jpg', 'image/jpeg']
       : ['video/mp4', 'video/gif']
     })
+
+    if(!result.canceled) {
+      if (selectType === 'image') {
+        setForm({ ...form, thumbnail: result.assets[0] })
+      }
+
+      if (selectType === 'video') {
+        setForm({ ...form, video: result.assets[0] })
+      }
+    } else {
+      setTimeout(() => {
+        Alert.alert('Document picked', JSON.stringify(result, null, 2))
+      }, 100)
+    }
   }
 
   const submit = () => {
