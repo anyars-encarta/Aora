@@ -6,7 +6,6 @@ import EmptyState from '../../components/EmptyState';
 import useAppwrite from '../../lib/useAppwrite';
 import { getAllPosts } from '../../lib/appwrite';
 import VideoCard from '../../components/VideoCard';
-import { useGlobalContext } from '../../context/GlobalProvider';
 
 const Bookmark = () => {
   const { data: posts, refetch } = useAppwrite(getAllPosts)
