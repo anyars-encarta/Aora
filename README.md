@@ -39,7 +39,7 @@
 <!-- INTRO -->
 # 📖 Job-it<a name="about-project"></a>
 
-> Aora is a mobile app for sharing AI generated videos. Authenticated users could create, save, search, and bookmark videos. It was built with React, React Native, Expo, and Appwrite. Appwriie,Expo, React
+> Aora is a mobile app for sharing AI generated videos. Authenticated users could create, save, search, and bookmark videos. It was built with React, React Native, Expo, and Appwrite. Appwriie,Expo
 
 ## 🛠 Built With <a name="built-with"></a>
 1. React
